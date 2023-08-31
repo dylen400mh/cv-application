@@ -1,5 +1,10 @@
 /* eslint-disable react/prop-types */
-function Resume({ generalInfo }) {
+function Resume({ generalInfo, education }) {
+  const educationDateString =
+    education.startDate || education.endDate
+      ? `${education.startDate} - ${education.endDate}`
+      : "";
+
   return (
     <div>
       <header>
@@ -10,7 +15,9 @@ function Resume({ generalInfo }) {
         </ul>
       </header>
       <main>
-
+        <h2>{education.school}</h2>
+        <h3>{education.degree}</h3>
+        <span>{educationDateString}</span>
       </main>
     </div>
   );
