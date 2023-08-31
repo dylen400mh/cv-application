@@ -16,11 +16,26 @@ function GeneralInfo({ data, handleChange }) {
     <section>
       <h1>General Info</h1>
       <label htmlFor="">Full Name</label>
-      <input type="text" placeholder="Full Name" onChange={handleNameChange} />
+      <input
+        type="text"
+        placeholder="Full Name"
+        value={data.name}
+        onChange={handleNameChange}
+      />
       <label htmlFor="">Email</label>
-      <input type="text" placeholder="Email" onChange={handleEmailChange} />
+      <input
+        type="text"
+        placeholder="Email"
+        value={data.email}
+        onChange={handleEmailChange}
+      />
       <label htmlFor="">Phone Number</label>
-      <input type="text" placeholder="Phone Number" onChange={handlePhoneChange}/>
+      <input
+        type="text"
+        placeholder="Phone Number"
+        value={data.phone}
+        onChange={handlePhoneChange}
+      />
     </section>
   );
 }
