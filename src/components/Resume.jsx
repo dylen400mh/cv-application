@@ -1,9 +1,12 @@
 /* eslint-disable react/prop-types */
 function Resume({ generalInfo, education }) {
-  const educationDateString =
-    education.startDate || education.endDate
-      ? `${education.startDate} - ${education.endDate}`
+  const formatDateString = (startDate, endDate) => {
+    return startDate && endDate
+      ? `${startDate} - ${endDate}`
+      : startDate && !endDate
+      ? `${startDate} - Present`
       : "";
+  };
 
   return (
     <div>
@@ -15,9 +18,10 @@ function Resume({ generalInfo, education }) {
         </ul>
       </header>
       <main>
-        <h2>{education.school}</h2>
-        <h3>{education.degree}</h3>
-        <span>{educationDateString}</span>
+        <h2>Education</h2>
+        <h3>{education.school}</h3>
+        <p>{education.degree}</p>
+        <span>{formatDateString(education.startDate, education.endDate)}</span>
       </main>
     </div>
   );
