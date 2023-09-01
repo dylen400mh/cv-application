@@ -2,9 +2,9 @@
 function EducationSection({
   educations,
   handleEducationEdit,
+  handleEducationDelete,
   formatDateString,
 }) {
-  // TODO add button to delete an education
   return educations.map((education) => {
     return (
       <section key={education.id}>
@@ -13,6 +13,9 @@ function EducationSection({
         <span>{formatDateString(education.startDate, education.endDate)}</span>
         <button onClick={handleEducationEdit} id={education.id}>
           Edit
+        </button>
+        <button onClick={handleEducationDelete} id={education.id}>
+          Delete
         </button>
       </section>
     );

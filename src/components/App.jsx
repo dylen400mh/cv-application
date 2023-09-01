@@ -24,6 +24,8 @@ function App() {
 
   const [generalInfoVisible, setGeneralInfoVisible] = useState(false);
   const [educationVisible, setEducationVisible] = useState(false);
+
+  // keeps track of ID of component to modify
   const [selectedId, setSelectedId] = useState(null);
 
   const handleGeneralEdit = () => {
@@ -54,6 +56,16 @@ function App() {
     setEducationVisible(true);
   };
 
+  const handleEducationDelete = (e) => {
+    console.log(e.target);
+    setEducations(
+      educations.filter((education) => education.id !== e.target.id)
+    );
+
+    // If education was deleted while editing, update display state
+    if (educationVisible) setEducationVisible(false);
+  };
+
   return (
     <>
       {generalInfoVisible ? (
@@ -71,6 +83,7 @@ function App() {
                 id={education.id}
                 data={educations}
                 handleChange={setEducations}
+                handleDelete={handleEducationDelete}
                 handleSubmit={handleEducationSubmit}
               />
             )
@@ -83,6 +96,7 @@ function App() {
           handleGeneralEdit={handleGeneralEdit}
           handleEducationEdit={handleEducationEdit}
           handleEducationAdd={handleEducationAdd}
+          handleEducationDelete={handleEducationDelete}
         />
       )}
     </>

@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-function EducationForm({ id, data, handleChange, handleSubmit }) {
+function EducationForm({ id, data, handleChange, handleDelete, handleSubmit }) {
   const education = data.find((education) => id === education.id);
 
   const handleSchoolChange = (e) => {
@@ -38,9 +38,6 @@ function EducationForm({ id, data, handleChange, handleSubmit }) {
     ]);
   };
 
-  //TODO this section should have multiple educations, with options to delete or submit. Only show edited education
-
-
   return (
     <section>
       <h1>Education</h1>
@@ -70,6 +67,9 @@ function EducationForm({ id, data, handleChange, handleSubmit }) {
         value={education.endDate}
         onChange={handleEndChange}
       />
+      <button onClick={handleDelete} id={education.id}>
+          Delete
+        </button>
       <button onClick={handleSubmit}>Submit</button>
     </section>
   );

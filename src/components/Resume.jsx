@@ -8,6 +8,7 @@ function Resume({
   educations,
   handleEducationEdit,
   handleEducationAdd,
+  handleEducationDelete,
 }) {
   const formatDateString = (startDate, endDate) => {
     return startDate && endDate
@@ -17,7 +18,6 @@ function Resume({
       : "";
   };
 
-  // TODO add button to delete an education
   return (
     <div>
       <GeneralInfoSection
@@ -32,6 +32,7 @@ function Resume({
             educations={educations}
             formatDateString={formatDateString}
             handleEducationEdit={handleEducationEdit}
+            handleEducationDelete={handleEducationDelete}
           />
         );
       })}
