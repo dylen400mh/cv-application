@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import GeneralInfoSection from "./GeneralInfoSection";
+import EducationSection from "./EducationSection";
 
 function Resume({ generalInfo, handleGeneralEdit, education }) {
   const formatDateString = (startDate, endDate) => {
@@ -14,13 +15,14 @@ function Resume({ generalInfo, handleGeneralEdit, education }) {
 
   return (
     <div>
-      <GeneralInfoSection generalInfo={generalInfo} handleGeneralEdit={handleGeneralEdit}/>
-      <main>
-        <h2>Education</h2>
-        <h3>{education.school}</h3>
-        <p>{education.degree}</p>
-        <span>{formatDateString(education.startDate, education.endDate)}</span>
-      </main>
+      <GeneralInfoSection
+        generalInfo={generalInfo}
+        handleGeneralEdit={handleGeneralEdit}
+      />
+      <EducationSection
+        education={education}
+        formatDateString={formatDateString}
+      />
     </div>
   );
 }
