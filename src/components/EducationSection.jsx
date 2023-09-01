@@ -6,6 +6,7 @@ function EducationSection({
   handleEducationEdit,
   handleEducationDelete,
   formatDateString,
+  isPreviewing,
 }) {
   return (
     <div className="education" key={education.id}>
@@ -13,14 +14,16 @@ function EducationSection({
         <b>{education.degree}</b> - {education.school},{" "}
         {formatDateString(education.startDate, education.endDate)}
       </p>
-      <div className="buttons">
-        <button onClick={handleEducationEdit} id={education.id}>
-          Edit
-        </button>
-        <button onClick={handleEducationDelete} id={education.id}>
-          Delete
-        </button>
-      </div>
+      {!isPreviewing && (
+        <div className="buttons">
+          <button onClick={handleEducationEdit} id={education.id}>
+            Edit
+          </button>
+          <button onClick={handleEducationDelete} id={education.id}>
+            Delete
+          </button>
+        </div>
+      )}
     </div>
   );
 }

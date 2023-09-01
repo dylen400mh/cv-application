@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
-import "../styles/GeneralInfoSection.css"
+import "../styles/GeneralInfoSection.css";
 
-function GeneralInfoSection({ generalInfo, handleGeneralEdit }) {
+function GeneralInfoSection({ generalInfo, handleGeneralEdit, isPreviewing }) {
   return (
     <div className="generalInfo">
       <h1>{generalInfo.name}</h1>
@@ -9,7 +9,7 @@ function GeneralInfoSection({ generalInfo, handleGeneralEdit }) {
         <li>{generalInfo.email}</li>
         <li>{generalInfo.phone}</li>
       </ul>
-      <button onClick={handleGeneralEdit}>Edit</button>
+      {!isPreviewing && <button onClick={handleGeneralEdit}>Edit</button>}
     </div>
   );
 }

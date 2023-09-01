@@ -6,6 +6,7 @@ function WorkSection({
   handleWorkEdit,
   handleWorkDelete,
   formatDateString,
+  isPreviewing,
 }) {
   return (
     <div className="work" key={work.id}>
@@ -14,14 +15,16 @@ function WorkSection({
         {formatDateString(work.startDate, work.endDate)}
       </p>
       <p className="responsibilities">{work.responsibilities}</p>
-      <div className="buttons">
-        <button onClick={handleWorkEdit} id={work.id}>
-          Edit
-        </button>
-        <button onClick={handleWorkDelete} id={work.id}>
-          Delete
-        </button>
-      </div>
+      {!isPreviewing && (
+        <div className="buttons">
+          <button onClick={handleWorkEdit} id={work.id}>
+            Edit
+          </button>
+          <button onClick={handleWorkDelete} id={work.id}>
+            Delete
+          </button>
+        </div>
+      )}
     </div>
   );
 }

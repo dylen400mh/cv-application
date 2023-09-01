@@ -6,9 +6,7 @@ import EducationForm from "./EducationForm";
 import WorkForm from "./WorkForm";
 import Resume from "./Resume";
 
-// TODO fix issue where educations and work are repeated twice
 // TODO add option to preview (removes buttons from resume component)
-// TODO use flex/grid to style
 
 function App() {
   const [generalInfo, setGeneralInfo] = useState({

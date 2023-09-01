@@ -3,6 +3,7 @@ import GeneralInfoSection from "./GeneralInfoSection";
 import EducationSection from "./EducationSection";
 import WorkSection from "./WorkSection";
 import "../styles/Resume.css";
+import { useState } from "react";
 
 function Resume({
   generalInfo,
@@ -16,6 +17,8 @@ function Resume({
   handleWorkAdd,
   handleWorkDelete,
 }) {
+  const [isPreviewing, setIsPreviewing] = useState(false);
+
   const formatDateString = (startDate, endDate) => {
     return startDate && endDate
       ? `${startDate} - ${endDate}`
@@ -24,15 +27,25 @@ function Resume({
       : "";
   };
 
+  const handlePreviewToggle = () => {
+    isPreviewing ? setIsPreviewing(false) : setIsPreviewing(true);
+  };
+
   return (
     <div className="resume">
+      <button className="modeButton" onClick={handlePreviewToggle}>
+        {isPreviewing ? "Edit Resume" : "Preview Resume"}
+      </button>
       <GeneralInfoSection
         generalInfo={generalInfo}
         handleGeneralEdit={handleGeneralEdit}
+        isPreviewing={isPreviewing}
       />
       <div className="container">
         <h2>Education</h2>
-        <button onClick={handleEducationAdd}>Add Education</button>
+        {!isPreviewing && (
+          <button onClick={handleEducationAdd}>Add Education</button>
+        )}
       </div>
       {educations.map((education) => {
         return (
@@ -42,12 +55,15 @@ function Resume({
             formatDateString={formatDateString}
             handleEducationEdit={handleEducationEdit}
             handleEducationDelete={handleEducationDelete}
+            isPreviewing={isPreviewing}
           />
         );
       })}
       <div className="container">
         <h2>Work Experience</h2>
-        <button onClick={handleWorkAdd}>Add Work Experience</button>
+        {!isPreviewing && (
+          <button onClick={handleWorkAdd}>Add Work Experience</button>
+        )}
       </div>
       {works.map((work) => {
         return (
@@ -57,6 +73,7 @@ function Resume({
             formatDateString={formatDateString}
             handleWorkEdit={handleWorkEdit}
             handleWorkDelete={handleWorkDelete}
+            isPreviewing={isPreviewing}
           />
         );
       })}
