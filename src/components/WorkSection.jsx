@@ -1,4 +1,6 @@
 /* eslint-disable react/prop-types */
+import "../styles/WorkSection.css";
+
 function WorkSection({
   work,
   handleWorkEdit,
@@ -6,7 +8,7 @@ function WorkSection({
   formatDateString,
 }) {
   return (
-    <section key={work.id}>
+    <div key={work.id}>
       <h3>{work.company}</h3>
       <p>{work.title}</p>
       <p>{work.responsibilities}</p>
@@ -17,7 +19,7 @@ function WorkSection({
       <button onClick={handleWorkDelete} id={work.id}>
         Delete
       </button>
-    </section>
+    </div>
   );
 }
 

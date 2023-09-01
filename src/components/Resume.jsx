@@ -2,6 +2,7 @@
 import GeneralInfoSection from "./GeneralInfoSection";
 import EducationSection from "./EducationSection";
 import WorkSection from "./WorkSection";
+import "../styles/Resume.css";
 
 function Resume({
   generalInfo,
@@ -24,7 +25,7 @@ function Resume({
   };
 
   return (
-    <div>
+    <div className="resume">
       <GeneralInfoSection
         generalInfo={generalInfo}
         handleGeneralEdit={handleGeneralEdit}

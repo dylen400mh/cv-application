@@ -13,7 +13,7 @@ function GeneralInfoForm({ data, handleChange, handleSubmit }) {
   };
 
   return (
-    <section>
+    <div>
       <h1>General Info</h1>
       <label htmlFor="">Full Name</label>
       <input
@@ -37,7 +37,7 @@ function GeneralInfoForm({ data, handleChange, handleSubmit }) {
         onChange={handlePhoneChange}
       />
       <button onClick={handleSubmit}>Submit</button>
-    </section>
+    </div>
   );
 }
 

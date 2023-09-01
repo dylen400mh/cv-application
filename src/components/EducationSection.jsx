@@ -1,4 +1,6 @@
 /* eslint-disable react/prop-types */
+import "../styles/EducationSection.css";
+
 function EducationSection({
   education,
   handleEducationEdit,
@@ -6,17 +8,21 @@ function EducationSection({
   formatDateString,
 }) {
   return (
-    <section key={education.id}>
+    <div className="education" key={education.id}>
       <h3>{education.school}</h3>
-      <p>{education.degree}</p>
-      <span>{formatDateString(education.startDate, education.endDate)}</span>
-      <button onClick={handleEducationEdit} id={education.id}>
-        Edit
-      </button>
-      <button onClick={handleEducationDelete} id={education.id}>
-        Delete
-      </button>
-    </section>
+      <p className="degree">{education.degree}</p>
+      <span className="date">
+        {formatDateString(education.startDate, education.endDate)}
+      </span>
+      <div className="buttons">
+        <button onClick={handleEducationEdit} id={education.id}>
+          Edit
+        </button>
+        <button onClick={handleEducationDelete} id={education.id}>
+          Delete
+        </button>
+      </div>
+    </div>
   );
 }
 

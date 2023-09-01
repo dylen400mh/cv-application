@@ -127,7 +127,7 @@ function App() {
   };
 
   return (
-    <>
+    <div className="app">
       {generalInfoVisible ? (
         <GeneralInfoForm
           data={generalInfo}
@@ -178,7 +178,7 @@ function App() {
           handleWorkDelete={handleWorkDelete}
         />
       )}
-    </>
+    </div>
   );
 }
 

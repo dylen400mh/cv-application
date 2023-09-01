@@ -33,7 +33,7 @@ function WorkForm({ id, data, handleChange, handleDelete, handleSubmit }) {
   };
 
   return (
-    <section>
+    <div>
       <h1>Work Experience</h1>
       <label htmlFor="">Company</label>
       <input
@@ -66,7 +66,7 @@ function WorkForm({ id, data, handleChange, handleDelete, handleSubmit }) {
         Delete
       </button>
       <button onClick={handleSubmit}>Submit</button>
-    </section>
+    </div>
   );
 }
 
