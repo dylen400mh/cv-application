@@ -1,4 +1,6 @@
 /* eslint-disable react/prop-types */
+import GeneralInfoSection from "./GeneralInfoSection";
+
 function Resume({ generalInfo, handleGeneralEdit, education }) {
   const formatDateString = (startDate, endDate) => {
     return startDate && endDate
@@ -8,16 +10,11 @@ function Resume({ generalInfo, handleGeneralEdit, education }) {
       : "";
   };
 
+  // TODO add button to add/edit/delete an education
+
   return (
     <div>
-      <header>
-        <h1>{generalInfo.name}</h1>
-        <ul>
-          <li>{generalInfo.email}</li>
-          <li>{generalInfo.phone}</li>
-        </ul>
-        <button onClick={handleGeneralEdit}>Edit</button>
-      </header>
+      <GeneralInfoSection generalInfo={generalInfo} handleGeneralEdit={handleGeneralEdit}/>
       <main>
         <h2>Education</h2>
         <h3>{education.school}</h3>
