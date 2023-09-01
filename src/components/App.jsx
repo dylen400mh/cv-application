@@ -24,40 +24,34 @@ function App() {
 
   const [generalInfoVisible, setGeneralInfoVisible] = useState(false);
   const [educationVisible, setEducationVisible] = useState(false);
-  const [resumeVisible, setResumeVisible] = useState(true);
 
   const handleGeneralEdit = () => {
     setGeneralInfoVisible(true);
-    setResumeVisible(false);
   };
 
   const handleGeneralSubmit = () => {
     setGeneralInfoVisible(false);
-    setResumeVisible(true);
   };
 
   const handleEducationEdit = () => {
     setEducationVisible(true);
-    setResumeVisible(false);
   };
 
   const handleEducationSubmit = () => {
     setEducationVisible(false);
-    setResumeVisible(true);
   };
 
   // TODO only ensure the one edited education is rendered
 
   return (
     <>
-      {generalInfoVisible && (
+      {generalInfoVisible ? (
         <GeneralInfoForm
           data={generalInfo}
           handleChange={setGeneralInfo}
           handleSubmit={handleGeneralSubmit}
         />
-      )}
-      {educationVisible &&
+      ) : educationVisible ? (
         educations.map((education) => {
           return (
             <EducationForm
@@ -68,8 +62,8 @@ function App() {
               handleSubmit={handleEducationSubmit}
             />
           );
-        })}
-      {resumeVisible && (
+        })
+      ) : (
         <Resume
           generalInfo={generalInfo}
           educations={educations}
