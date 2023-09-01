@@ -16,6 +16,9 @@ function Education({ data, handleChange }) {
     handleChange({ ...data, endDate: e.target.value });
   };
 
+  //TODO this section should have multiple educations, with options to delete or submit. Only show edited education
+  
+
   return (
     <section>
       <h1>Education</h1>

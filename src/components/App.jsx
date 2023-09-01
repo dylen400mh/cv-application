@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "../styles/App.css";
-import GeneralInfo from "./GeneralInfo";
-import Education from "./Education";
+import GeneralInfoForm from "./GeneralInfoForm";
+import EducationForm from "./EducationForm";
 import Resume from "./Resume";
 
 function App() {
@@ -35,13 +35,13 @@ function App() {
   return (
     <>
       {generalInfoVisible && (
-        <GeneralInfo
+        <GeneralInfoForm
           data={generalInfo}
           handleChange={setGeneralInfo}
           handleSubmit={handleGeneralSubmit}
         />
       )}
-      <Education data={education} handleChange={setEducation} />
+      <EducationForm data={education} handleChange={setEducation} />
       {resumeVisible && (
         <Resume
           generalInfo={generalInfo}
