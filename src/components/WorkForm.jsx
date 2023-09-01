@@ -51,7 +51,7 @@ function WorkForm({ id, data, handleChange, handleDelete, handleSubmit }) {
       />
       <label htmlFor="">Responsibilities</label>
       <textarea
-        style="resize: none"
+        style={{resize: "none"}}
         cols="30"
         rows="10"
         placeholder="Enter Responsibilities"
