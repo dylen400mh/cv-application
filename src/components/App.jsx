@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 import { useState } from "react";
 import "../styles/App.css";
 import GeneralInfoForm from "./GeneralInfoForm";
@@ -20,7 +21,6 @@ function App() {
 
   const [generalInfoVisible, setGeneralInfoVisible] = useState(false);
   const [educationVisible, setEducationVisible] = useState(false);
-
   const [resumeVisible, setResumeVisible] = useState(true);
 
   const handleGeneralEdit = () => {
