@@ -15,7 +15,7 @@ function GeneralInfoForm({ data, handleChange, handleSubmit }) {
   };
 
   return (
-    <div className="generalInfo">
+    <div className="generalInfoForm">
       <h1>General Info</h1>
       <div className="container">
         <label htmlFor="">Full Name</label>
