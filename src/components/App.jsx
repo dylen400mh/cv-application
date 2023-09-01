@@ -3,7 +3,12 @@ import { useState } from "react";
 import "../styles/App.css";
 import GeneralInfoForm from "./GeneralInfoForm";
 import EducationForm from "./EducationForm";
+import WorkForm from "./WorkForm";
 import Resume from "./Resume";
+
+// TODO fix issue where educations and work are repeated twice
+// TODO add option to preview (removes buttons from resume component)
+// TODO use flex/grid to style
 
 function App() {
   const [generalInfo, setGeneralInfo] = useState({
@@ -22,12 +27,25 @@ function App() {
     },
   ]);
 
+  const [works, setWorks] = useState([
+    {
+      company: "Google",
+      title: "Software Engineer",
+      responsibilities: "Wrote code!",
+      startDate: "2018-01",
+      endDate: "",
+      id: uuidv4(),
+    },
+  ]);
+
   const [generalInfoVisible, setGeneralInfoVisible] = useState(false);
   const [educationVisible, setEducationVisible] = useState(false);
+  const [workVisible, setWorkVisible] = useState(false);
 
   // keeps track of ID of component to modify
   const [selectedId, setSelectedId] = useState(null);
 
+  // GENERAL INFO HANDLERS
   const handleGeneralEdit = () => {
     setGeneralInfoVisible(true);
   };
@@ -36,6 +54,7 @@ function App() {
     setGeneralInfoVisible(false);
   };
 
+  // EDUCATION HANDLERS
   const handleEducationEdit = (e) => {
     setSelectedId(e.target.id);
     setEducationVisible(true);
@@ -51,19 +70,60 @@ function App() {
 
     setEducations([
       ...educations,
-      { school: "", degree: "", startDate: "", endDate: "", id: newId },
+      {
+        school: "",
+        degree: "",
+        responsibilities: "",
+        startDate: "",
+        endDate: "",
+        id: newId,
+      },
     ]);
     setEducationVisible(true);
   };
 
   const handleEducationDelete = (e) => {
-    console.log(e.target);
     setEducations(
       educations.filter((education) => education.id !== e.target.id)
     );
 
     // If education was deleted while editing, update display state
     if (educationVisible) setEducationVisible(false);
+  };
+
+  // WORK HANDLERS
+  const handleWorkEdit = (e) => {
+    setSelectedId(e.target.id);
+    setWorkVisible(true);
+  };
+
+  const handleWorkSubmit = () => {
+    setWorkVisible(false);
+  };
+
+  const handleWorkAdd = () => {
+    const newId = uuidv4();
+    setSelectedId(newId);
+
+    setWorks([
+      ...works,
+      {
+        company: "",
+        title: "",
+        responsibilities: "",
+        startDate: "",
+        endDate: "",
+        id: newId,
+      },
+    ]);
+    setWorkVisible(true);
+  };
+
+  const handleWorkDelete = (e) => {
+    setWorks(works.filter((work) => work.id !== e.target.id));
+
+    // If work was deleted while editing, update display state
+    if (workVisible) setWorkVisible(false);
   };
 
   return (
@@ -89,14 +149,33 @@ function App() {
             )
           );
         })
+      ) : workVisible ? (
+        works.map((work) => {
+          return (
+            work.id === selectedId && (
+              <WorkForm
+                key={work.id}
+                id={work.id}
+                data={works}
+                handleChange={setWorks}
+                handleDelete={handleWorkDelete}
+                handleSubmit={handleWorkSubmit}
+              />
+            )
+          );
+        })
       ) : (
         <Resume
           generalInfo={generalInfo}
           educations={educations}
+          works={works}
           handleGeneralEdit={handleGeneralEdit}
           handleEducationEdit={handleEducationEdit}
           handleEducationAdd={handleEducationAdd}
           handleEducationDelete={handleEducationDelete}
+          handleWorkEdit={handleWorkEdit}
+          handleWorkAdd={handleWorkAdd}
+          handleWorkDelete={handleWorkDelete}
         />
       )}
     </>
