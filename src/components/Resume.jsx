@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-function Resume({ generalInfo, education }) {
+function Resume({ generalInfo, handleGeneralEdit, education }) {
   const formatDateString = (startDate, endDate) => {
     return startDate && endDate
       ? `${startDate} - ${endDate}`
@@ -16,6 +16,7 @@ function Resume({ generalInfo, education }) {
           <li>{generalInfo.email}</li>
           <li>{generalInfo.phone}</li>
         </ul>
+        <button onClick={handleGeneralEdit}>Edit</button>
       </header>
       <main>
         <h2>Education</h2>

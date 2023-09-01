@@ -18,11 +18,37 @@ function App() {
     endDate: "",
   });
 
+  const [generalInfoVisible, setGeneralInfoVisible] = useState(false);
+
+  const [resumeVisible, setResumeVisible] = useState(true);
+
+  const handleGeneralEdit = () => {
+    setGeneralInfoVisible(true);
+    setResumeVisible(false);
+  };
+
+  const handleGeneralSubmit = () => {
+    setGeneralInfoVisible(false);
+    setResumeVisible(true);
+  };
+
   return (
     <>
-      <GeneralInfo data={generalInfo} handleChange={setGeneralInfo} />
+      {generalInfoVisible && (
+        <GeneralInfo
+          data={generalInfo}
+          handleChange={setGeneralInfo}
+          handleSubmit={handleGeneralSubmit}
+        />
+      )}
       <Education data={education} handleChange={setEducation} />
-      <Resume generalInfo={generalInfo} education={education} />
+      {resumeVisible && (
+        <Resume
+          generalInfo={generalInfo}
+          education={education}
+          handleGeneralEdit={handleGeneralEdit}
+        />
+      )}
     </>
   );
 }

@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-function GeneralInfo({ data, handleChange }) {
+function GeneralInfo({ data, handleChange, handleSubmit }) {
   const handleNameChange = (e) => {
     handleChange({ ...data, name: e.target.value });
   };
@@ -36,6 +36,7 @@ function GeneralInfo({ data, handleChange }) {
         value={data.phone}
         onChange={handlePhoneChange}
       />
+      <button onClick={handleSubmit}>Submit</button>
     </section>
   );
 }
