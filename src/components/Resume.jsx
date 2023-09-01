@@ -5,7 +5,7 @@ import EducationSection from "./EducationSection";
 function Resume({
   generalInfo,
   handleGeneralEdit,
-  education,
+  educations,
   handleEducationEdit,
 }) {
   const formatDateString = (startDate, endDate) => {
@@ -23,11 +23,11 @@ function Resume({
         handleGeneralEdit={handleGeneralEdit}
       />
       <h2>Education</h2>
-      {education.map((item) => {
+      {educations.map((education) => {
         return (
           <EducationSection
-            key={item.id}
-            education={item}
+            key={education.id}
+            educations={educations}
             formatDateString={formatDateString}
             handleEducationEdit={handleEducationEdit}
           />

@@ -1,23 +1,45 @@
 /* eslint-disable react/prop-types */
-function EducationForm({ data, handleChange, handleSubmit }) {
+function EducationForm({ id, data, handleChange, handleSubmit }) {
+  const education = data.find((education) => id === education.id);
+
   const handleSchoolChange = (e) => {
-    handleChange({ ...data, school: e.target.value });
+    education.school = e.target.value;
+
+    handleChange([
+      ...data.filter((education) => id !== education.id),
+      education,
+    ]);
   };
 
   const handleDegreeChange = (e) => {
-    handleChange({ ...data, degree: e.target.value });
+    education.degree = e.target.value;
+
+    handleChange([
+      ...data.filter((education) => id !== education.id),
+      education,
+    ]);
   };
 
   const handleStartChange = (e) => {
-    handleChange({ ...data, startDate: e.target.value });
+    education.startDate = e.target.value;
+
+    handleChange([
+      ...data.filter((education) => id !== education.id),
+      education,
+    ]);
   };
 
   const handleEndChange = (e) => {
-    handleChange({ ...data, endDate: e.target.value });
+    education.endDate = e.target.value;
+
+    handleChange([
+      ...data.filter((education) => id !== education.id),
+      education,
+    ]);
   };
 
   //TODO this section should have multiple educations, with options to delete or submit. Only show edited education
-  // TODO make sure input is populated properly
+
 
   return (
     <section>
@@ -26,20 +48,28 @@ function EducationForm({ data, handleChange, handleSubmit }) {
       <input
         type="text"
         placeholder="School"
-        value={data.school}
+        value={education.school}
         onChange={handleSchoolChange}
       />
       <label htmlFor="">Degree</label>
       <input
         type="text"
         placeholder="Degree"
-        value={data.degree}
+        value={education.degree}
         onChange={handleDegreeChange}
       />
       <label htmlFor="">Start Date</label>
-      <input type="month" value={data.startDate} onChange={handleStartChange} />
+      <input
+        type="month"
+        value={education.startDate}
+        onChange={handleStartChange}
+      />
       <label htmlFor="">End Date</label>
-      <input type="month" value={data.endDate} onChange={handleEndChange} />
+      <input
+        type="month"
+        value={education.endDate}
+        onChange={handleEndChange}
+      />
       <button onClick={handleSubmit}>Submit</button>
     </section>
   );

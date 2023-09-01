@@ -12,7 +12,7 @@ function App() {
     phone: "123-456-7890",
   });
 
-  const [education, setEducation] = useState([
+  const [educations, setEducations] = useState([
     {
       school: "Harvard University",
       degree: "Bachelor of Arts",
@@ -46,6 +46,8 @@ function App() {
     setResumeVisible(true);
   };
 
+  // TODO only ensure the one edited education is rendered
+
   return (
     <>
       {generalInfoVisible && (
@@ -55,17 +57,22 @@ function App() {
           handleSubmit={handleGeneralSubmit}
         />
       )}
-      {educationVisible && (
-        <EducationForm
-          data={education}
-          handleChange={setEducation}
-          handleSubmit={handleEducationSubmit}
-        />
-      )}
+      {educationVisible &&
+        educations.map((education) => {
+          return (
+            <EducationForm
+              key={education.id}
+              id={education.id}
+              data={educations}
+              handleChange={setEducations}
+              handleSubmit={handleEducationSubmit}
+            />
+          );
+        })}
       {resumeVisible && (
         <Resume
           generalInfo={generalInfo}
-          education={education}
+          educations={educations}
           handleGeneralEdit={handleGeneralEdit}
           handleEducationEdit={handleEducationEdit}
         />

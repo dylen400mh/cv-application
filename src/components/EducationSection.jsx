@@ -1,18 +1,20 @@
 /* eslint-disable react/prop-types */
 function EducationSection({
-  education,
+  educations,
   handleEducationEdit,
   formatDateString,
 }) {
-  return (
-    <main>
-      <h2>Education</h2>
-      <h3>{education.school}</h3>
-      <p>{education.degree}</p>
-      <span>{formatDateString(education.startDate, education.endDate)}</span>
-      <button onClick={handleEducationEdit}>Edit</button>
-    </main>
-  );
+  // TODO add button to add/edit/delete an education
+  return educations.map((education) => {
+    return (
+      <section key={education.id}>
+        <h3>{education.school}</h3>
+        <p>{education.degree}</p>
+        <span>{formatDateString(education.startDate, education.endDate)}</span>
+        <button onClick={handleEducationEdit}>Edit</button>
+      </section>
+    );
+  });
 }
 
 export default EducationSection;
