@@ -34,7 +34,7 @@ function Resume({
         return (
           <EducationSection
             key={education.id}
-            educations={educations}
+            education={education}
             formatDateString={formatDateString}
             handleEducationEdit={handleEducationEdit}
             handleEducationDelete={handleEducationDelete}
@@ -47,7 +47,7 @@ function Resume({
         return (
           <WorkSection
             key={work.id}
-            works={works}
+            work={work}
             formatDateString={formatDateString}
             handleWorkEdit={handleWorkEdit}
             handleWorkDelete={handleWorkDelete}
