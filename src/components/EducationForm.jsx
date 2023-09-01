@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-function Education({ data, handleChange, handleSubmit }) {
+function EducationForm({ data, handleChange, handleSubmit }) {
   const handleSchoolChange = (e) => {
     handleChange({ ...data, school: e.target.value });
   };
@@ -17,6 +17,7 @@ function Education({ data, handleChange, handleSubmit }) {
   };
 
   //TODO this section should have multiple educations, with options to delete or submit. Only show edited education
+  // TODO make sure input is populated properly
 
   return (
     <section>
@@ -44,4 +45,4 @@ function Education({ data, handleChange, handleSubmit }) {
   );
 }
 
-export default Education;
+export default EducationForm;

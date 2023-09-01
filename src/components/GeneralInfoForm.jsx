@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-function GeneralInfo({ data, handleChange, handleSubmit }) {
+function GeneralInfoForm({ data, handleChange, handleSubmit }) {
   const handleNameChange = (e) => {
     handleChange({ ...data, name: e.target.value });
   };
@@ -41,4 +41,4 @@ function GeneralInfo({ data, handleChange, handleSubmit }) {
   );
 }
 
-export default GeneralInfo;
+export default GeneralInfoForm;
