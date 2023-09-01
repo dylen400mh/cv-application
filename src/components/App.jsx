@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 import { useState } from "react";
 import "../styles/App.css";
 import GeneralInfoForm from "./GeneralInfoForm";
@@ -12,12 +12,15 @@ function App() {
     phone: "123-456-7890",
   });
 
-  const [education, setEducation] = useState({
-    school: "Harvard University",
-    degree: "Bachelor of Arts",
-    startDate: "",
-    endDate: "",
-  });
+  const [education, setEducation] = useState([
+    {
+      school: "Harvard University",
+      degree: "Bachelor of Arts",
+      startDate: "2023-01",
+      endDate: "",
+      id: uuidv4(),
+    },
+  ]);
 
   const [generalInfoVisible, setGeneralInfoVisible] = useState(false);
   const [educationVisible, setEducationVisible] = useState(false);

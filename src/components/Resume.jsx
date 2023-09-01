@@ -16,20 +16,23 @@ function Resume({
       : "";
   };
 
-  // TODO add button to add/edit/delete an education
-  // TODO store array of educations/render list
-
   return (
     <div>
       <GeneralInfoSection
         generalInfo={generalInfo}
         handleGeneralEdit={handleGeneralEdit}
       />
-      <EducationSection
-        education={education}
-        formatDateString={formatDateString}
-        handleEducationEdit={handleEducationEdit}
-      />
+      <h2>Education</h2>
+      {education.map((item) => {
+        return (
+          <EducationSection
+            key={item.id}
+            education={item}
+            formatDateString={formatDateString}
+            handleEducationEdit={handleEducationEdit}
+          />
+        );
+      })}
     </div>
   );
 }
