@@ -7,6 +7,7 @@ function Resume({
   handleGeneralEdit,
   educations,
   handleEducationEdit,
+  handleEducationAdd,
 }) {
   const formatDateString = (startDate, endDate) => {
     return startDate && endDate
@@ -16,6 +17,7 @@ function Resume({
       : "";
   };
 
+  // TODO add button to delete an education
   return (
     <div>
       <GeneralInfoSection
@@ -33,6 +35,7 @@ function Resume({
           />
         );
       })}
+      <button onClick={handleEducationAdd}>Add Education</button>
     </div>
   );
 }

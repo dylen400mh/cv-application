@@ -41,6 +41,14 @@ function App() {
     setEducationVisible(false);
   };
 
+  const handleEducationAdd = () => {
+    setEducations([
+      ...educations,
+      { school: "", degree: "", startDate: "", endDate: "", id: uuidv4() },
+    ]);
+    setEducationVisible(true);
+  };
+
   // TODO only ensure the one edited education is rendered
 
   return (
@@ -69,6 +77,7 @@ function App() {
           educations={educations}
           handleGeneralEdit={handleGeneralEdit}
           handleEducationEdit={handleEducationEdit}
+          handleEducationAdd={handleEducationAdd}
         />
       )}
     </>
