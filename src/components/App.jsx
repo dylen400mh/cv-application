@@ -24,6 +24,7 @@ function App() {
 
   const [generalInfoVisible, setGeneralInfoVisible] = useState(false);
   const [educationVisible, setEducationVisible] = useState(false);
+  const [selectedId, setSelectedId] = useState(null);
 
   const handleGeneralEdit = () => {
     setGeneralInfoVisible(true);
@@ -33,7 +34,8 @@ function App() {
     setGeneralInfoVisible(false);
   };
 
-  const handleEducationEdit = () => {
+  const handleEducationEdit = (e) => {
+    setSelectedId(e.target.id);
     setEducationVisible(true);
   };
 
@@ -42,14 +44,15 @@ function App() {
   };
 
   const handleEducationAdd = () => {
+    const newId = uuidv4();
+    setSelectedId(newId);
+
     setEducations([
       ...educations,
-      { school: "", degree: "", startDate: "", endDate: "", id: uuidv4() },
+      { school: "", degree: "", startDate: "", endDate: "", id: newId },
     ]);
     setEducationVisible(true);
   };
-
-  // TODO only ensure the one edited education is rendered
 
   return (
     <>
@@ -62,13 +65,15 @@ function App() {
       ) : educationVisible ? (
         educations.map((education) => {
           return (
-            <EducationForm
-              key={education.id}
-              id={education.id}
-              data={educations}
-              handleChange={setEducations}
-              handleSubmit={handleEducationSubmit}
-            />
+            education.id === selectedId && (
+              <EducationForm
+                key={education.id}
+                id={education.id}
+                data={educations}
+                handleChange={setEducations}
+                handleSubmit={handleEducationSubmit}
+              />
+            )
           );
         })
       ) : (
