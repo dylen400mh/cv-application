@@ -2,7 +2,12 @@
 import GeneralInfoSection from "./GeneralInfoSection";
 import EducationSection from "./EducationSection";
 
-function Resume({ generalInfo, handleGeneralEdit, education }) {
+function Resume({
+  generalInfo,
+  handleGeneralEdit,
+  education,
+  handleEducationEdit,
+}) {
   const formatDateString = (startDate, endDate) => {
     return startDate && endDate
       ? `${startDate} - ${endDate}`
@@ -12,6 +17,7 @@ function Resume({ generalInfo, handleGeneralEdit, education }) {
   };
 
   // TODO add button to add/edit/delete an education
+  // TODO store array of educations/render list
 
   return (
     <div>
@@ -22,6 +28,7 @@ function Resume({ generalInfo, handleGeneralEdit, education }) {
       <EducationSection
         education={education}
         formatDateString={formatDateString}
+        handleEducationEdit={handleEducationEdit}
       />
     </div>
   );

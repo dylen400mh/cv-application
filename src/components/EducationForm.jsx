@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-function Education({ data, handleChange }) {
+function Education({ data, handleChange, handleSubmit }) {
   const handleSchoolChange = (e) => {
     handleChange({ ...data, school: e.target.value });
   };
@@ -17,7 +17,6 @@ function Education({ data, handleChange }) {
   };
 
   //TODO this section should have multiple educations, with options to delete or submit. Only show edited education
-  
 
   return (
     <section>
@@ -40,6 +39,7 @@ function Education({ data, handleChange }) {
       <input type="month" value={data.startDate} onChange={handleStartChange} />
       <label htmlFor="">End Date</label>
       <input type="month" value={data.endDate} onChange={handleEndChange} />
+      <button onClick={handleSubmit}>Submit</button>
     </section>
   );
 }

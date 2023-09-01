@@ -19,6 +19,7 @@ function App() {
   });
 
   const [generalInfoVisible, setGeneralInfoVisible] = useState(false);
+  const [educationVisible, setEducationVisible] = useState(false);
 
   const [resumeVisible, setResumeVisible] = useState(true);
 
@@ -32,6 +33,16 @@ function App() {
     setResumeVisible(true);
   };
 
+  const handleEducationEdit = () => {
+    setEducationVisible(true);
+    setResumeVisible(false);
+  };
+
+  const handleEducationSubmit = () => {
+    setEducationVisible(false);
+    setResumeVisible(true);
+  };
+
   return (
     <>
       {generalInfoVisible && (
@@ -41,12 +52,19 @@ function App() {
           handleSubmit={handleGeneralSubmit}
         />
       )}
-      <EducationForm data={education} handleChange={setEducation} />
+      {educationVisible && (
+        <EducationForm
+          data={education}
+          handleChange={setEducation}
+          handleSubmit={handleEducationSubmit}
+        />
+      )}
       {resumeVisible && (
         <Resume
           generalInfo={generalInfo}
           education={education}
           handleGeneralEdit={handleGeneralEdit}
+          handleEducationEdit={handleEducationEdit}
         />
       )}
     </>
