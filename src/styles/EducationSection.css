@@ -1,0 +1,10 @@
+.education {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+}

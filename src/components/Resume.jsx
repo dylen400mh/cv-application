@@ -30,8 +30,10 @@ function Resume({
         generalInfo={generalInfo}
         handleGeneralEdit={handleGeneralEdit}
       />
-      <h2>Education</h2>
-      <button onClick={handleEducationAdd}>Add Education</button>
+      <div className="container">
+        <h2>Education</h2>
+        <button onClick={handleEducationAdd}>Add Education</button>
+      </div>
       {educations.map((education) => {
         return (
           <EducationSection
@@ -43,8 +45,10 @@ function Resume({
           />
         );
       })}
-      <h2>Work Experience</h2>
-      <button onClick={handleWorkAdd}>Add Work Experience</button>
+      <div className="container">
+        <h2>Work Experience</h2>
+        <button onClick={handleWorkAdd}>Add Work Experience</button>
+      </div>
       {works.map((work) => {
         return (
           <WorkSection

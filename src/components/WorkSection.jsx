@@ -8,17 +8,20 @@ function WorkSection({
   formatDateString,
 }) {
   return (
-    <div key={work.id}>
-      <h3>{work.company}</h3>
-      <p>{work.title}</p>
-      <p>{work.responsibilities}</p>
-      <span>{formatDateString(work.startDate, work.endDate)}</span>
-      <button onClick={handleWorkEdit} id={work.id}>
-        Edit
-      </button>
-      <button onClick={handleWorkDelete} id={work.id}>
-        Delete
-      </button>
+    <div className="work" key={work.id}>
+      <p className="title">
+        <b>{work.title}</b> - {work.company},{" "}
+        {formatDateString(work.startDate, work.endDate)}
+      </p>
+      <p className="responsibilities">{work.responsibilities}</p>
+      <div className="buttons">
+        <button onClick={handleWorkEdit} id={work.id}>
+          Edit
+        </button>
+        <button onClick={handleWorkDelete} id={work.id}>
+          Delete
+        </button>
+      </div>
     </div>
   );
 }

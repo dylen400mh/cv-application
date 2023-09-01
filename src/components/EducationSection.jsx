@@ -9,11 +9,10 @@ function EducationSection({
 }) {
   return (
     <div className="education" key={education.id}>
-      <h3>{education.school}</h3>
-      <p className="degree">{education.degree}</p>
-      <span className="date">
+      <p>
+        <b>{education.degree}</b> - {education.school},{" "}
         {formatDateString(education.startDate, education.endDate)}
-      </span>
+      </p>
       <div className="buttons">
         <button onClick={handleEducationEdit} id={education.id}>
           Edit
