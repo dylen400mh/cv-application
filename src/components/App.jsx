@@ -6,8 +6,6 @@ import EducationForm from "./EducationForm";
 import WorkForm from "./WorkForm";
 import Resume from "./Resume";
 
-// TODO add option to preview (removes buttons from resume component)
-
 function App() {
   const [generalInfo, setGeneralInfo] = useState({
     name: "John Doe",
